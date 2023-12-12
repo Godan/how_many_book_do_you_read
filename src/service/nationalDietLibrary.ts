@@ -1,18 +1,19 @@
-import axios, { AxiosInstance } from 'axios';
-import { Book } from '../domain/book';
+import { AxiosInstance } from 'axios';
+import Book from '../domain/book';
+import { LibraryService } from './libraryService';
 
-export class NationalDiteLibrary {
+export class NationalDiteLibrary implements LibraryService  {
   constructor(
     public http: AxiosInstance
   ) {}
 
   // isbnからBookを取得する
-  async fromISBN(isbn: string): Promise<Book> {
+  async fromISBNList(isbnList: string[]): Promise<Book[]> {
     const response = await this.http.get(
       "",
       {
         params: {
-          isbn: isbn,
+          isbn: isbnList.join(",")
         },
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -20,7 +21,7 @@ export class NationalDiteLibrary {
       }
     );
     console.log('response', response);
-    const book: Book = response.data.summary[0];
-    return book;
+    const books: Book[] = response.data;
+    return books;
   }
 }

@@ -1,9 +1,4 @@
-export interface BookRepository {
-  // isbnからBookを取得する
-  fromISBN(isbn: string): Promise<Book>;
-}
-
-export class Book {
+export default class Book {
 
   constructor(
     public id: number,
@@ -14,7 +9,7 @@ export class Book {
     public description: string,
     public cover: string,
     public isbn?: string,
-    public pages?: number,
+    public page?: number,
     public thickness?: number,
   ) {}
 
