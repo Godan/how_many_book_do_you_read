@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/how_many_book_do_you_read/static/css/main.f855e6bc.css",
+    "main.js": "/how_many_book_do_you_read/static/js/main.7c787fc2.js",
+    "static/js/787.56be9704.chunk.js": "/how_many_book_do_you_read/static/js/787.56be9704.chunk.js",
+    "index.html": "/how_many_book_do_you_read/index.html",
+    "main.f855e6bc.css.map": "/how_many_book_do_you_read/static/css/main.f855e6bc.css.map",
+    "main.7c787fc2.js.map": "/how_many_book_do_you_read/static/js/main.7c787fc2.js.map",
+    "787.56be9704.chunk.js.map": "/how_many_book_do_you_read/static/js/787.56be9704.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.7c787fc2.js"
+  ]
+}
