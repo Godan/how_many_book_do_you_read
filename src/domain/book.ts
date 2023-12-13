@@ -13,18 +13,15 @@ export default class Book {
     public thickness?: number,
   ) {}
 
+  public pageCount(): number {
+    return this.page || 0;
+  }
 
+  public thicknessSum(): number {
+    return this.thickness || 0;
+  }
 
-  //   isbnからBookを取得する
-  static fromISBN(isbn: string): Book {
-    return new Book(
-      1,
-      'title',
-      'author',
-      1000,
-      5,
-      'description',
-      'cover',
-    );
+  public thumbnailUrl(): string {
+    return `https://iss.ndl.go.jp/thumbnail/${this.isbn}`
   }
 }

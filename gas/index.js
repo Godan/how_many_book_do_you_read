@@ -21,16 +21,25 @@ function getBookInfo(isbn) {
   var root = xml.getRootElement();
   var entry = root.getChildren('channel')[0].getChildren('item')[0];
   
-  var title = entry.getChildText('title');
-  var author = entry.getChildText('author');
-  var publisher = entry.getChildText('publisher');
-  var date = entry.getChildText('date');
-  var description = entry.getChildText('description');
-  // <dc:extent>を取得
-  var extent = entry.getChild('extent', nameSpace).getText();
-  Logger.log(extent);
-  // np ; ncm となっているのでページと厚さ別々で正規表現で取得する
-  var extentArray = extent.match(/(\d+)p ; (\d+)cm/);
+  try{
+    var title = entry.getChildText('title');
+    var author = entry.getChildText('author');
+    var publisher = entry.getChildText('publisher');
+    var date = entry.getChildText('date');
+    var description = entry.getChildText('description');
+    // <dc:extent>を取得
+    var extent = entry.getChild('extent', nameSpace).getText();
+    Logger.log(extent);
+    // np ; ncm となっているのでページと厚さ別々で正規表現で取得する
+    var extentArray = extent.match(/(\d+)p ; (\d+)cm/);
+  }
+  catch(e){
+    Logger.log(e);
+  }
+
+  Logger.log(extentArray);
+
+  
   var bookInfo = {
     title: title,
     author: author,
@@ -38,8 +47,8 @@ function getBookInfo(isbn) {
     date: date,
     description: description,
     extent: extent,
-    page: extentArray[1],
-    thickness: extentArray[2]
+    page: extentArray ? Number(extentArray[1] || 0 ) : 0,
+    thickness:  extentArray ? Number(extentArray[2] || 0) : 0
   };
   console.log(bookInfo);
   return bookInfo;
